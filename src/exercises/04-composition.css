@@ -1,43 +1,47 @@
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
-.Person {
-  text-align: center;
+.person {
+    text-align: center;
 }
 
-.Person .Avatar {
-  display: block;
-  margin: 0 auto 15px;
+.person .avatar {
+    display: block;
+    margin: 0 auto 15px;
 }
 
-.Person b {
-  display: block;
-  font-size: 18px;
-}
-.Person em {
-  display: block;
-}
-.Person ul {
-  margin: 10px 0 0;
-  padding: 0;
-}
-.Person li {
-  display: inline-block;
+.person b {
+    display: block;
+    font-size: 18px;
 }
 
-.Icon {
-  background: #fff;
-  border-radius: 21px;
-  color: #777;
-  display: inline-block;
-  font-size: 28px;
-  width: 40px;
-  height: 40px;
-  text-align: center;
-  padding-top: 5px;
+.person em {
+    display: block;
 }
-.Icon:hover {
-  background: #36c;
-  color: #fff;
+
+.person ul {
+    margin: 10px 0 0;
+    padding: 0;
+}
+
+.person li {
+    display: inline-block;
+}
+
+.icon {
+    background: #fff;
+    border-radius: 21px;
+    color: #777;
+    display: inline-block;
+    font-size: 28px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    padding-top: 5px;
+}
+
+.icon:hover {
+    background: #36c;
+    color: #fff;
 }

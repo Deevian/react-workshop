@@ -1,8 +1,5 @@
-import React, {Component} from 'react'
+/* eslint no-unused-vars: 0 */
 
-export const Example = () => <div>Just look at the final</div>
+import React, { Component } from "react";
 
-/*
-eslint
-no-unused-vars: 0,
-*/
+export const Example = () => <div>Just look at the final</div>;

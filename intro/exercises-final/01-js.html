@@ -1,37 +1,44 @@
 <title>Hello World React</title>
-<script src="../react.min.js"></script>
-<script src="../react-dom.min.js"></script>
+
+<script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+
 <div id="root"></div>
+
 <script type="text/javascript">
-/*
-// Let's implement this ourselves...
+    /*
+    // Let"s implement this ourselves...
 
-function render(elementToRender, parentToRenderTo) {
-  parentToRenderTo.appendChild(elementToRender)
-}
-
-function createElement(type, attributes, ...children) {
-  const el = document.createElement(type)
-  Object.keys(attributes || {}).forEach(key => {
-    el.setAttribute(key, attributes[key])
-  })
-  children.forEach(child => {
-    if (typeof child === 'string') {
-      render(document.createTextNode(child), el)
-    } else {
-      render(child, el)
+    function render(elementToRender, parentToRenderTo) {
+        parentToRenderTo.appendChild(elementToRender);
     }
-  })
-  return el
-}
 
-render(
-  createElement('div', null, 'Hello World'),
-  document.getElementById('root')
-)
- */
-ReactDOM.render(
-  React.createElement('div', null, 'Hello World'),
-  document.getElementById('root')
-)
+    function createElement(type, attributes, ...children) {
+        const el = document.createElement(type);
+
+        Object.keys(attributes || {}).forEach(key => {
+            el.setAttribute(key, attributes[key]);
+        });
+
+        children.forEach(child => {
+            if (typeof child === "string") {
+                render(document.createTextNode(child), el);
+            } else {
+                render(child, el);
+            }
+        });
+
+        return el;
+    }
+
+    render(
+        createElement("div", null, "Hello World"),
+        document.getElementById("root")
+    );
+     */
+
+    ReactDOM.render(
+        React.createElement("div", null, "Hello World"),
+        document.getElementById("root")
+    );
 </script>

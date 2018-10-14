@@ -1,5 +1,7 @@
-import React, {Component} from 'react'
-import PropTypes from 'prop-types'
+/* eslint no-unused-vars: 0 */
+
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 // Pretty much every application is going to need to do something with forms
 // There are two ways to handle forms elements with React.
@@ -14,25 +16,20 @@ import PropTypes from 'prop-types'
 //
 // From there you can reference the input node elsewhere in your component methods.
 //
-// Exercise
-//   Render a form with an onSubmit handler that alerts the value of an input
+// Exercise:
+//   - Render a form with an `onSubmit` handler that alerts the value of an input.
 //
 // Tips:
-// - You'll need an <input type="submit" value="Submit" />
-// - Don't forget to do `event.preventDefault()` in your event handler
-// - Bonus points for adding a defaultValue prop to the <input>
+// - You'll need an <input type="submit" value="Submit" />;
+// - Don't forget to do `event.preventDefault()` in your event handler;
+// - Bonus points for adding a `defaultValue` prop to the <input>.
 
 class NameForm extends Component {
-  render() {
-    return <div>Render a form here</div>
-  }
+    render() {
+        return <div>Render a form here</div>;
+    }
 }
 
-export const Example = () => <NameForm defaultName="Marcy" />
+export const Example = () => <NameForm defaultName="Marcy"/>;
 
-export default NameForm
-
-/*
-eslint
-no-unused-vars: 0,
-*/
+export default NameForm;

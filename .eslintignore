@@ -1,6 +1,0 @@
-build
-node_modules
-other/src-templates
-intro/*.min.js
-scripts/workshop-setup.js
-coverage/
