@@ -9,7 +9,7 @@ function SayHello(props) {
 }
 
 export const Example = () => (
-    <SayHello firstName="Jill" lastName="Mayfield"/>
+    <SayHello firstName="Jill" lastName="Mayfield" />
 );
 
 export default SayHello;

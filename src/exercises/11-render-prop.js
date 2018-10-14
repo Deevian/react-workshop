@@ -1,5 +1,4 @@
 /* eslint no-unused-vars: 0 */
-
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
@@ -24,43 +23,48 @@ import axios from "axios";
 //         state = {
 //             user: {}
 //         };
-//   static propTypes = {
-//     username: PropTypes.number.isRequired,
-//     fetch: PropTypes.func,
-//   }
-//   static defaultProps = { fetch: axios.get } // doing this allows you to pass a mock version as a prop
 //
-//   componentDidMount() {
-//     this.props.fetch(`/users/${this.props.username}`)
-//       .then(
-//         ({data: user}) => this.setState({user}),
-//         // should add an error handler here :)
-//       )
-//   }
+//         static propTypes = {
+//             username: PropTypes.number.isRequired,
+//             fetch: PropTypes.func,
+//         };
 //
-//   render() {
-//     // doesn't have to be `children` prop. Can be anything.
-//     return this.props.children(this.state)
-//   }
-// }
+//         static defaultProps = {
+//             // Doing this allows you to pass a mock version as a prop
+//             fetch: axios.get
+//         };
 //
-// function UserProfile({username, ...rest}) {
-//   return (
-//     <FetchUserProfile username={username} {...rest}>
-//       {({user}) => (
-//         <div>
-//           <div>First name: {user.firstName}</div>
-//           <div>Last name: {user.lastName}</div>
-//           <div>Email address: {user.emailAddress}</div>
-//         </div>
-//       )}
-//     </FetchUserProfile>
-//   )
-// }
+//         componentDidMount() {
+//             this.props.fetch(`/users/${this.props.username}`)
+//                 .then(
+//                     ({ data: user }) => this.setState({ user }),
+//                     // Should add an error handler here :)
+//                 );
+//         }
 //
-// UserProfile.propTypes = {
-//   username: PropTypes.number.isRequired
-// }
+//         render() {
+//             // Doesn't have to be `children` prop. Can be anything.
+//             return this.props.children(this.state)
+//         }
+//     }
+//
+//     function UserProfile({ username, ...rest }) {
+//         return (
+//             <FetchUserProfile username={username} {...rest}>
+//             {({ user }) => (
+//                 <div>
+//                     <div>First name: {user.firstName}</div>
+//                     <div>Last name: {user.lastName}</div>
+//                     <div>Email address: {user.emailAddress}</div>
+//                 </div>
+//             )}
+//             </FetchUserProfile>
+//         );
+//     }
+//
+//     UserProfile.propTypes = {
+//       username: PropTypes.number.isRequired
+//     };
 //
 // Ultimately, you can take this further to a generic Fetch component which can making
 // subsequent requests on prop changes, caching, multiple requests in parallel, etc.
@@ -71,42 +75,41 @@ import axios from "axios";
 // - Refactor the original component to use the render callback pattern.
 
 class FetchRepoList extends Component {
-    // put all the state related stuff in this component
-    // and pass the state to the `children` render callback in `render`
+    // Put all the state related stuff in this component and pass the state to the
+    // `children` render callback in `render`.
     render() {
         return null;
     }
 }
 
-// Refactor this to be a function component that uses <FetchRepoList>
+// Refactor this to be a function component that uses <FetchRepoList>.
 class RepoListContainer extends Component {
     state = {
         repos: null,
         loading: false,
         error: null,
     };
-    
+
     static propTypes = {
         username: PropTypes.string.isRequired,
         fetch: PropTypes.func,
     };
-    
+
     static defaultProps = {
         fetch: axios.get,
     };
-    
-    
+
     componentDidMount() {
         this.fetchRepos();
     }
-    
+
     fetchRepos() {
         this.setState({
             repos: null,
             loading: true,
             error: null
         });
-        
+
         this.props
             .fetch(
                 `https://api.github.com/users/${this.props.username}/repos?per_page=100&sort=pushed`,
@@ -124,26 +127,26 @@ class RepoListContainer extends Component {
                 }),
             );
     }
-    
+
     render() {
         const { repos, loading, error } = this.state;
         const { username } = this.props;
-        
+
         return (
             <div>
                 {loading ? (
                     <div>Loading...</div>
                 ): null}
-                
+
                 {error ? (
                     <div>
                         Error loading info for <code>{username}</code>
                         <pre>{JSON.stringify(error, null, 2)}</pre>
                     </div>
                 ): null}
-                
+
                 {repos ? (
-                    <RepoList username={username} repos={repos}/>
+                    <RepoList username={username} repos={repos} />
                 ) : null}
             </div>
         );
@@ -155,7 +158,7 @@ function RepoList({ username, repos }) {
         <div>
             <h1>{username}'s repos</h1>
             <ul style={{ textAlign: "left" }}>
-                {repos.map(repo => {
+                {repos.map((repo) => {
                     return <li key={repo.id}>{repo.name}</li>;
                 })}
             </ul>
@@ -174,17 +177,17 @@ RepoList.propTypes = {
 };
 
 export const Example = () => (
-    <RepoListContainer username="deevian" fetch={mockFetch}/>
+    <RepoListContainer username="deevian" fetch={mockFetch} />
 );
 
 // This is for you!
 function mockFetch() {
     // Set this to `Number.MAX_VALUE` test the loading state
     const delay = 0;
-    
+
     // Set this to `true` to test out the error state
     const sendError = false;
-    
+
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             if (sendError) {

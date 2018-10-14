@@ -5,21 +5,21 @@ class NameForm extends Component {
     state = {
         value: "",
     };
-    
+
     static propTypes = {
         getErrorMessage: PropTypes.func.isRequired,
     };
-    
+
     componentDidMount() {
         this.onValueChange();
     }
-    
+
     handleChange = event => {
         const { value } = event.target;
 
         this.onValueChange(value);
     };
-    
+
     handleSubmit = event => {
         event.preventDefault();
 
@@ -27,13 +27,13 @@ class NameForm extends Component {
             alert(this.state.value);
         }
     };
-    
+
     onValueChange(value = this.state.value) {
         const error = this.props.getErrorMessage(value);
 
         this.setState({ value, error });
     }
-    
+
     render() {
         const { value, error } = this.state;
         const hasError = Boolean(error);
@@ -42,13 +42,13 @@ class NameForm extends Component {
             <form onSubmit={this.handleSubmit}>
                 <label>
                     Name:
-                    <input type="text" value={value} onChange={this.handleChange}/>
+                    <input type="text" value={value} onChange={this.handleChange} />
                 </label>
 
                 {hasError ? (
                     <div style={{ color: "red" }}>{error}</div>
                 ) : (
-                    <input type="submit" value="Submit"/>
+                    <input type="submit" value="Submit" />
                 )}
             </form>
         );

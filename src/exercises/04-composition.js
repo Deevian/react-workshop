@@ -1,5 +1,4 @@
 /* eslint no-unused-vars: 0 */
-
 import React from "react";
 import PropTypes from "prop-types";
 import "font-awesome/css/font-awesome.min.css";
@@ -8,18 +7,18 @@ import "./04-composition.css";
 
 function Person(props) {
     // Compose the <Avatar /> and <Icon /> components together to create this <Person /> component:
-    // - <div className="Person"> is your root element;
+    // - `<div className="Person">` is your root element;
     // - Render `props.name` (in <b>), `props.title` (in <em>);
-    // - Render two <Icon /> components (one each for Twitter and Github) as <li> in a <ul>.
-    
+    // - Render two <Icon /> components (one each for "twitter" and "github") as <li> in a <ul>.
+
     return (
         <div className="person">
-            {/* render stuff in here */}
+            {/* Render stuff in here */}
         </div>
     );
 }
 
-// Here are your `propTypes`!
+// Here are your `propTypes` :)
 Person.propTypes = {
     avatar: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
@@ -43,8 +42,8 @@ function Avatar(props) {
     );
 }
 
-// We didn't really talk about `defaultProps`, but this is what
-// the `size` will be set to if it's not provided.
+// We didn't really talk about `defaultProps`, but this is what the `size` will be set
+// to if it's not provided.
 Avatar.defaultProps = {
     size: 200,
 };
@@ -62,7 +61,7 @@ function Icon(props) {
             rel="noopener noreferrer"
             className="icon"
         >
-            <i className={`fa fa-${props.type}`}/>
+            <i className={`fa fa-${props.type}`} />
         </a>
     );
 }

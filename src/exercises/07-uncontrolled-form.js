@@ -1,5 +1,4 @@
 /* eslint no-unused-vars: 0 */
-
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
@@ -12,7 +11,7 @@ import PropTypes from "prop-types";
 // You can either get a reference via an event handler `event` argument (`event.target`),
 // or by using the special `ref` prop on the element like so:
 //
-//     <input ref={node => this.input = node} />
+//    <input ref={node => this.input = node} />
 //
 // From there you can reference the input node elsewhere in your component methods.
 //
@@ -30,6 +29,6 @@ class NameForm extends Component {
     }
 }
 
-export const Example = () => <NameForm defaultName="Marcy"/>;
+export const Example = () => <NameForm defaultName="Marcy" />;
 
 export default NameForm;

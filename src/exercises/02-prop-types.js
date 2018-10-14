@@ -1,5 +1,4 @@
 /* eslint no-unused-vars: 0 */
-
 // Learn more about React PropTypes here:
 // https://facebook.github.io/react/docs/typechecking-with-proptypes.html
 
@@ -14,8 +13,8 @@ function SayHello(props) {
     );
 }
 
-// Specify `firstName` and `lastName` PropTypes for the SayHello
-// component by giving SayHello a `propTypes` object property.
+// Specify `firstName` and `lastName` prop types for the `SayHello` component
+// by giving `SayHello` a `propTypes` object property.
 //
 // They should both be strings and be required.
 //
@@ -24,6 +23,6 @@ function SayHello(props) {
 //
 // Then check out the error you get in the console when this example is rendered.
 // Then fix this example and see the error removed.
-export const Example = () => <SayHello firstName={true}/>;
+export const Example = () => <SayHello firstName={true} />;
 
 export default SayHello;

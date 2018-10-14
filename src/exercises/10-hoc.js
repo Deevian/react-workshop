@@ -1,5 +1,4 @@
 /* eslint no-unused-vars: 0 */
-
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
@@ -32,7 +31,8 @@ import axios from "axios";
 //             };
 //
 //             static defaultProps = {
-//                 fetch: axios.get, // Doing this allows you to pass a mock version as a prop
+//                 // Doing this allows you to pass a mock version as a prop
+//                 fetch: axios.get,
 //             };
 //
 //             componentDidMount() {
@@ -40,12 +40,12 @@ import axios from "axios";
 //                     .then(
 //                         ({ data: user }) => this.setState({user}),
 //                         // should add an error handler here :)
-//                     )
+//                     );
 //             }
 //
 //             render() {
-//                 // We're spreading the state of repos, loading, and error as props to the Comp
-//                 // We're forwarding the `props` given to this component to the child Comp
+//                 // We're spreading the state of repos, loading, and error as props to the Comp.
+//                 // We're forwarding the `props` given to this component to the child Comp.
 //                 return <Comp {...this.state} {...this.props} />;
 //             }
 //         }
@@ -73,7 +73,7 @@ import axios from "axios";
 //  - Refactor the original component to use the render callback pattern;
 //  - Create a function that accepts a component class and returns a new component class;
 //  - Put all the state related stuff in this new component and render the given component
-//  in the new component's render method.
+//    in the new component's render method.
 
 class RepoListContainer extends Component {
     state = {
@@ -91,11 +91,10 @@ class RepoListContainer extends Component {
         fetch: axios.get,
     };
 
-    
     componentDidMount() {
         this.fetchRepos();
     }
-    
+
     fetchRepos() {
         this.setState({
             repos: null,
@@ -120,7 +119,7 @@ class RepoListContainer extends Component {
                 }),
             );
     }
-    
+
     render() {
         const { repos, loading, error } = this.state;
         const { username } = this.props;
@@ -139,7 +138,7 @@ class RepoListContainer extends Component {
                 ): null}
 
                 {repos ? (
-                    <RepoList username={username} repos={repos}/>
+                    <RepoList username={username} repos={repos} />
                 ) : null}
             </div>
         );
@@ -151,7 +150,7 @@ function RepoList({ username, repos }) {
         <div>
             <h1>{username}'s repos</h1>
             <ul style={{ textAlign: "left" }}>
-                {repos.map(repo => {
+                {repos.map((repo) => {
                     return <li key={repo.id}>{repo.name}</li>;
                 })}
             </ul>
@@ -170,17 +169,17 @@ RepoList.propTypes = {
 };
 
 export const Example = () => (
-    <RepoListContainer username="deevian" fetch={mockFetch}/>
+    <RepoListContainer username="deevian" fetch={mockFetch} />
 );
 
 // This is for you!
 function mockFetch() {
     // Set this to `Number.MAX_VALUE` test the loading state
     const delay = 0;
-    
+
     // Set this to `true` to test out the error state
     const sendError = false;
-    
+
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             if (sendError) {

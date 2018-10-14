@@ -1,5 +1,4 @@
 /* eslint no-unused-vars: 0 */
-
 import React from "react";
 
 // So far we've just been using function components.
@@ -39,7 +38,7 @@ import React from "react";
 //             this.setState({
 //                 clicks: this.state.clicks + 1
 //             });
-//         }
+//         };
 //
 //         render() {
 //             return (
@@ -62,7 +61,7 @@ class StopWatch extends React.Component {
     //   time and when start was started)
     //
     // In your render method, you'll render a div wrapper with a label that renders
-    // {this.state.lapse} and two buttons (Start/Stop, and Clear).
+    // {this.state.lapse} and two buttons (Start / Stop, and Clear).
     //
     // You'll need to have an `onClick` handler on the <buttons> and you can define
     // those using Public Class Fields.

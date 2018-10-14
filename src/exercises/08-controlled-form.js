@@ -1,5 +1,4 @@
 /* eslint no-unused-vars: 0 */
-
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
@@ -8,21 +7,21 @@ import PropTypes from "prop-types";
 // via `onChange` which receives the `event` (and you can get the value via
 // `event.target.value`) like so:
 //
-//     <input onChange={event => console.log(event.target.value)} />
+//    <input onChange={event => console.log(event.target.value)} />
 //
 // In this scenario, you also need to provide the value for the input like so:
 //
-//     <input value={this.state.value} />
+//    <input value={this.state.value} />
 //
-// This gives you a lot more power over the input. This is not like your ng-model
+// This gives you a lot more power over the input. This is not like your `ng-model`
 // from Angular. It's a little more low-level than that. But this control is really nice
 // and building up from here is just a matter of writing some JavaScript :)
 //
 // Exercise
-//   - Render a form with an onSubmit handler that alerts the value of an input;
+//   - Render a form with an `onSubmit` handler that alerts the value of an input;
 //   - Keep track of the value as the user types;
 //   - Render a red error message via `this.props.getErrorMessage(value)` if one is returned,
-//   otherwise render the submit button;
+//     otherwise render the submit button;
 //   - Don't let the user submit the form if there's an error;
 //
 // Tips:

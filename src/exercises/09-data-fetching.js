@@ -1,10 +1,9 @@
 /* eslint no-unused-vars: 0 */
-
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
 
-// For our data fetching needs, we're going to use axios.get (imported above)
+// For our data fetching needs, we're going to use `axios.get` (imported above).
 //
 // It is best not to fetch data from a server in the `render` method. As we
 // saw in the last exercise any change to the state of a component can cause
@@ -27,19 +26,20 @@ import axios from "axios";
 //         };
 //
 //         static defaultProps = {
-//             fetch: axios.get, // Doing this allows you to pass a mock version as a prop
+//             // Doing this allows you to pass a mock version as a prop
+//             fetch: axios.get,
 //         };
 //
 //         componentDidMount() {
 //             this.props.fetch(`/users/${this.props.username}`)
 //                 .then(
 //                     ({ data: user }) => this.setState({user}),
-//                     // should add an error handler here :)
+//                     // Should add an error handler here :)
 //                 )
 //         }
 //
 //         render() {
-//             const {user} = this.state;
+//             const { user } = this.state;
 //
 //             return (
 //                 <div>
@@ -65,8 +65,8 @@ import axios from "axios";
 //
 // Tip:
 // - You may end up getting throttled by GitHub if you keep refreshing and making unauthenticated
-// requests to their API. To avoid this, I recommend you return some fake data in `componentDidMount`
-// and only implement that when you're done with everything else.
+//   requests to their API. To avoid this, I recommend you return some fake data in `componentDidMount`
+//   and only implement that when you're done with everything else.
 
 class RepoListContainer extends Component {
     render() {
@@ -93,10 +93,10 @@ export const Example = () => <div>Render the RepoListContainer here</div>;
 function mockFetch() {
     // Set this to `Number.MAX_VALUE` test the loading state
     const delay = 0;
-    
+
     // Set this to `true` to test out the error state
     const sendError = false;
-    
+
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             if (sendError) {

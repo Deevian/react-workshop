@@ -17,11 +17,11 @@ class RepoListContainer extends Component {
     static defaultProps = {
         fetch: axios.get,
     };
-    
+
     componentDidMount() {
         this.fetchRepos();
     }
-    
+
     fetchRepos() {
         this.setState({
             repos: null,
@@ -39,33 +39,33 @@ class RepoListContainer extends Component {
                     error: null,
                     loading: false
                 }),
-                error => this.setState({
+                (error) => this.setState({
                     repos: null,
                     error,
                     loading: false
                 }),
             );
     }
-    
+
     render() {
         const { repos, loading, error } = this.state;
         const { username } = this.props;
-        
+
         return (
             <div>
                 {loading ? (
                     <div>Loading...</div>
                 ): null}
-                
+
                 {error ? (
                     <div>
                         Error loading info for <code>{username}</code>
                         <pre>{JSON.stringify(error, null, 2)}</pre>
                     </div>
                 ): null}
-                
+
                 {repos ? (
-                    <RepoList username={username} repos={repos}/>
+                    <RepoList username={username} repos={repos} />
                 ) : null}
             </div>
         );
@@ -96,17 +96,17 @@ RepoList.propTypes = {
 };
 
 export const Example = () => (
-    <RepoListContainer username="deevian" fetch={mockFetch}/>
+    <RepoListContainer username="deevian" fetch={mockFetch} />
 );
 
 // This is for you!
 function mockFetch() {
     // Set this to `Number.MAX_VALUE` test the loading state
     const delay = 0;
-    
+
     // Set this to `true` to test out the error state
     const sendError = false;
-    
+
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             if (sendError) {

@@ -8,27 +8,27 @@ class FetchRepoList extends Component {
         loading: false,
         error: null,
     };
-    
+
     static propTypes = {
         username: PropTypes.string.isRequired,
         fetch: PropTypes.func,
     };
-    
+
     static defaultProps = {
         fetch: axios.get,
     };
-    
+
     componentDidMount() {
         this.fetchRepos();
     }
-    
+
     fetchRepos() {
         this.setState({
             repos: null,
             loading: true,
             error: null
         });
-        
+
         this.props
             .fetch(
                 `https://api.github.com/users/${this.props.username}/repos?per_page=100&sort=pushed`,
@@ -39,14 +39,14 @@ class FetchRepoList extends Component {
                     error: null,
                     loading: false
                 }),
-                error => this.setState({
+                (error) => this.setState({
                     repos: null,
                     error,
                     loading: false
                 }),
             );
     }
-    
+
     render() {
         return this.props.children(this.state);
     }
@@ -60,16 +60,16 @@ function RepoListContainer({ username, ...rest }) {
                     {loading ? (
                         <div>Loading...</div>
                     ): null}
-        
+
                     {error ? (
                         <div>
                             Error loading info for <code>{username}</code>
                             <pre>{JSON.stringify(error, null, 2)}</pre>
                         </div>
                     ): null}
-        
+
                     {repos ? (
-                        <RepoList username={username} repos={repos}/>
+                        <RepoList username={username} repos={repos} />
                     ) : null}
                 </div>
             )}
@@ -86,7 +86,7 @@ function RepoList({ username, repos }) {
         <div>
             <h1>{username}'s repos</h1>
             <ul style={{ textAlign: "left" }}>
-                {repos.map(repo => {
+                {repos.map((repo) => {
                     return <li key={repo.id}>{repo.name}</li>;
                 })}
             </ul>
@@ -105,17 +105,17 @@ RepoList.propTypes = {
 };
 
 export const Example = () => (
-    <RepoListContainer username="deevian" fetch={mockFetch}/>
+    <RepoListContainer username="deevian" fetch={mockFetch} />
 );
 
 // This is for you!
 function mockFetch() {
     // Set this to `Number.MAX_VALUE` test the loading state
     const delay = 0;
-    
+
     // Set this to `true` to test out the error state
     const sendError = false;
-    
+
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             if (sendError) {

@@ -1,5 +1,5 @@
 <title>Hello World React</title>
-<meta charset="utf-8"/>
+<meta charset="utf-8" />
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
 <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
@@ -8,42 +8,44 @@
 <div id="root"></div>
 
 <script type="text/babel">
-    // In regular JavaScript, when you want to share and re-use functionality, you can create a function
-    // for that functionality. JSX is the same way. To do this, you create a component.
+    // In regular JavaScript, when you want to share and re-use functionality, you
+    // can create a function for that functionality. JSX is the same way. To do this,
+    // you create a component.
     //
-    // There are a few ways to do this, for now, we'll go with the simplest. That is simply a function
-    // that returns UI (JSX). For example:
+    // There are a few ways to do this, for now, we'll go with the simplest. That
+    // is simply a function that returns UI (JSX). For example:
     //
-    // function SayHi() {
-    //   return (
-    //     <div>Hi there!</div>
-    //   );
-    // }
+    //      function SayHi() {
+    //          return (
+    //          return (
+    //              <div>Hi there!</div>
+    //          );
+    //      }
     //
-    // To use this component with the raw React.createElement API, you would use:
+    // To use this component with the raw `React.createElement` API, you would use:
     //
-    // React.createElement(SayHi, null)
+    //      React.createElement(SayHi, null)
     //
     // If you want to use JSX, you can write it like this:
     //
-    // <SayHi></SayHi>
+    //      <SayHi></SayHi>
     //
     // And you can use self-closing tags for elements with no children:
     //
-    // <SayHi />
+    //      <SayHi />
     //
     // Exercise:
-    // - Write a SayHello component which renders <div>Hello World</div>
-    //   and render it into #root using ReactDOM.render
+    // - Write a `SayHello` component which renders `<div>Hello World</div>` and render it
+    // into `#root` using `ReactDOM.render`.
     //
     // Tips:
-    // - In React components, there must be one, and only one root element (often this is a div)
+    // - In React components, there must be one, and only one root element -- often this is a `div`.
     //   Note that in React 16, you can alternatively return an array of elements.
     //
     // Bonus:
-    // - Once you've finished the exercise, go ahead and explore what React.createElement
+    // - Once you've finished the exercise, go ahead and explore what `React.createElement`
     //   (or the JSX equivalent) returns. This is an object called a React Element
     //   (aka: UI Descriptor object). Unlike DOM elements, creating these is super cheap.
-    //   To do this, try: console.log(React.createElement(SayHello)) or console.log(<SayHello />)
-    //   and open up the developer console.
+    //   To do this, try: `console.log(React.createElement(SayHello))` or
+    //   `console.log(<SayHello />)` and open up the developer console.
 </script>

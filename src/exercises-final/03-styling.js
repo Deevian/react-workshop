@@ -10,7 +10,7 @@ function Box(props) {
     );
 }
 
-// I'm gonna give this one to you :)
+// I'm gonna give this one to you :D
 Box.propTypes = {
     size: PropTypes.oneOf(["small", "medium", "large"]),
     style: PropTypes.object,

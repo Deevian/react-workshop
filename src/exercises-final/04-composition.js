@@ -1,20 +1,23 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "font-awesome/css/font-awesome.min.css";
+
 import "./04-composition.css";
 
 function Person(props) {
     return (
         <div className="person">
-            <Avatar url={props.avatar}/>
+            <Avatar url={props.avatar} />
+
             <b>{props.name}</b>
             <em>{props.title}</em>
+
             <ul>
                 <li>
-                    <Icon href={`https://twitter.com/${props.twitter}`} type="twitter"/>
+                    <Icon href={`https://twitter.com/${props.twitter}`} type="twitter" />
                 </li>
                 <li>
-                    <Icon href={`https://github.com/${props.github}`} type="github"/>
+                    <Icon href={`https://github.com/${props.github}`} type="github" />
                 </li>
             </ul>
         </div>
@@ -45,8 +48,8 @@ function Avatar(props) {
     );
 }
 
-// We didn't really talk about `defaultProps`, but this is what
-// the `size` will be set to if it's not provided.
+// We didn't really talk about `defaultProps`, but this is what the `size` will be set
+// to if it's not provided.
 Avatar.defaultProps = {
     size: 200,
 };
@@ -64,7 +67,7 @@ function Icon(props) {
             rel="noopener noreferrer"
             className="icon"
         >
-            <i className={`fa fa-${props.type}`}/>
+            <i className={`fa fa-${props.type}`} />
         </a>
     );
 }

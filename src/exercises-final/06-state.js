@@ -5,14 +5,14 @@ class StopWatch extends React.Component {
         running: false,
         lapse: 0,
     };
-    
+
     now = 0;
     timer = null;
-    
+
     componentWillUnmount() {
         this.stop();
     }
-    
+
     handleRunClick = () => {
         if (this.state.running) {
             this.stop();
@@ -20,30 +20,32 @@ class StopWatch extends React.Component {
             this.start();
         }
     };
-    
+
     handleClearClick = () => {
         this.stop();
         this.now = 0;
+
         this.setState({ lapse: 0 });
     };
-    
+
     start() {
         this.timer = setInterval(() => {
             this.setState({
                 lapse: Date.now() - this.now,
             });
         });
-        
+
         this.now = Date.now() - this.state.lapse;
         this.setState({ running: true });
     }
-    
+
     stop() {
         clearInterval(this.timer);
         this.timer = null;
+
         this.setState({ running: false });
     }
-    
+
     render() {
         const labelStyles = { fontSize: "5em", display: "block" };
         const buttonStyles = {
@@ -54,7 +56,7 @@ class StopWatch extends React.Component {
             margin: "0 5px",
             width: "200px",
         };
-        
+
         return (
             <div style={{ textAlign: "center" }}>
                 <label style={labelStyles}>

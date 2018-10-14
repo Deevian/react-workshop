@@ -25,9 +25,9 @@ const exercises = [
     { title: "Data Fetching", component: DataFetching },
     { title: "Higher Order Components", component: Hoc },
     { title: "Render Props", component: RenderProp },
-].map(e => ({
-    ...e,
-    slug: e.title
+].map((exercise) => ({
+    ...exercise,
+    slug: exercise.title
         .split(" ")
         .join("-")
         .toLowerCase(),
@@ -37,9 +37,9 @@ function Exercises({ match }) {
     return (
         <div>
             {exercises.map(({ slug, component }) => (
-                <Route key={slug} path={`/exercise/${slug}`} component={component}/>
+                <Route key={slug} path={`/exercise/${slug}`} component={component} />
             ))}
-            
+
             <Route
                 exact
                 path={match.url}
