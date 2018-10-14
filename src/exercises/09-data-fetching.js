@@ -91,7 +91,7 @@ export const Example = () => <div>Render the RepoListContainer here</div>;
 
 // This is for you!
 function mockFetch() {
-    // Set this to `Number.MAX_VALUE` test the loading state
+    // Set this to 5000 test the loading state
     const delay = 0;
 
     // Set this to `true` to test out the error state
