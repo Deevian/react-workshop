@@ -25,7 +25,7 @@ import axios from "axios";
 //                 super(props);
 //
 //                 this.state = {
-//                     user: {}
+//                     user: {},
 //                 };
 //             }
 //

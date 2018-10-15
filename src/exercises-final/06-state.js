@@ -6,7 +6,7 @@ class StopWatch extends React.Component {
 
         this.state = {
             running: false,
-            lapse: 0
+            lapse: 0,
         };
 
         this.now = 0;

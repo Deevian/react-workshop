@@ -7,7 +7,9 @@ class FetchRepoList extends Component {
         super(props);
 
         this.state = {
-            user: {}
+            repos: null,
+            loading: true,
+            error: null,
         };
 
         this.fetchRepos = this.fetchRepos.bind(this);

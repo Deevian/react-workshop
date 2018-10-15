@@ -34,11 +34,13 @@ import React from "react";
 //             super(props);
 //
 //             this.state = {
-//                 clicks: 0
+//                 clicks: 0,
 //             };
+//
+//             this.handleButtonClick = this.handleButtonClick.bind(this);
 //         }
 //
-//         handleButtonClick = () => {
+//         handleButtonClick() {
 //             this.setState({
 //                 clicks: this.state.clicks + 1
 //             });

@@ -6,11 +6,12 @@ class NameForm extends Component {
         super(props);
 
         this.state = {
-            value: ""
+            value: "",
         };
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.onValueChange = this.onValueChange.bind(this);
     }
 
     componentDidMount() {
@@ -48,11 +49,10 @@ class NameForm extends Component {
                     <input type="text" value={value} onChange={this.handleChange} />
                 </label>
 
-                {hasError ? (
-                    <div style={{ color: "red" }}>{error}</div>
-                ) : (
-                    <input type="submit" value="Submit" />
-                )}
+                {hasError
+                    ? <div style={{ color: "red" }}>{error}</div>
+                    : <input type="submit" value="Submit" />
+                }
             </form>
         );
     }

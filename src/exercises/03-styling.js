@@ -9,7 +9,7 @@ function Box(props) {
     return (
         // Render a `div` with the properties:
         // - `className` that is assigned to `box box--${props.size}`;
-        // - `style` that is assigned to `props.style` inside the div, forward
+        // - `style` that is assigned to `props.style` inside the `div`, forward
         //   along `props.children`.
         <div>Incomplete</div>
     );

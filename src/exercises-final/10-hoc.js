@@ -10,7 +10,9 @@ function fetchDataComponent(Comp) {
             super(props);
 
             this.state = {
-                user: {}
+                repos: null,
+                loading: false,
+                error: null,
             };
 
             this.fetchRepos = this.fetchRepos.bind(this);
@@ -24,7 +26,7 @@ function fetchDataComponent(Comp) {
             this.setState({
                 repos: null,
                 loading: true,
-                error: null
+                error: null,
             });
 
             this.props
@@ -87,8 +89,6 @@ function RepoListContainer({ username, repos, loading, error }) {
 
 RepoListContainer.propTypes = {
     username: PropTypes.string.isRequired,
-
-    // Honestly, I'm short-cutting here because it's a little wild. Ask me if you're curious.
     repos: PropTypes.any,
     error: PropTypes.any,
     loading: PropTypes.bool,

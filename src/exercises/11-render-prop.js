@@ -104,7 +104,7 @@ class RepoListContainer extends Component {
         this.setState({
             repos: null,
             loading: true,
-            error: null
+            error: null,
         });
 
         this.props
@@ -115,12 +115,12 @@ class RepoListContainer extends Component {
                 ({ data: repos }) => this.setState({
                     repos,
                     error: null,
-                    loading: false
+                    loading: false,
                 }),
                 (error) => this.setState({
                     repos: null,
                     error,
-                    loading: false
+                    loading: false,
                 }),
             );
     }
