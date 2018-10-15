@@ -3,20 +3,15 @@ import PropTypes from "prop-types";
 import axios from "axios";
 
 class FetchRepoList extends Component {
-    state = {
-        repos: null,
-        loading: false,
-        error: null,
-    };
+    constructor(props) {
+        super(props);
 
-    static propTypes = {
-        username: PropTypes.string.isRequired,
-        fetch: PropTypes.func,
-    };
+        this.state = {
+            user: {}
+        };
 
-    static defaultProps = {
-        fetch: axios.get,
-    };
+        this.fetchRepos = this.fetchRepos.bind(this);
+    }
 
     componentDidMount() {
         this.fetchRepos();
@@ -51,6 +46,15 @@ class FetchRepoList extends Component {
         return this.props.children(this.state);
     }
 }
+
+FetchRepoList.propTypes = {
+    username: PropTypes.string.isRequired,
+    fetch: PropTypes.func,
+};
+
+FetchRepoList.defaultProps = {
+    fetch: axios.get,
+};
 
 function RepoListContainer({ username, ...rest }) {
     return (

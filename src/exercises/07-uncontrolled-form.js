@@ -11,7 +11,7 @@ import PropTypes from "prop-types";
 // You can either get a reference via an event handler `event` argument (`event.target`),
 // or by using the special `ref` prop on the element like so:
 //
-//    <input ref={node => this.input = node} />
+//    <input ref={(node) => this.input = node} />
 //
 // From there you can reference the input node elsewhere in your component methods.
 //

@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 // via `onChange` which receives the `event` (and you can get the value via
 // `event.target.value`) like so:
 //
-//    <input onChange={event => console.log(event.target.value)} />
+//    <input onChange={(event) => console.log(event.target.value)} />
 //
 // In this scenario, you also need to provide the value for the input like so:
 //
@@ -35,7 +35,7 @@ class NameForm extends Component {
 
 export const Example = () => (
     <NameForm
-        getErrorMessage={value => {
+        getErrorMessage={(value) => {
             if (value.length < 3) {
                 return `Value must be at least 3 characters, but is only ${value.length}`;
             }

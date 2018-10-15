@@ -1,19 +1,26 @@
 import React from "react";
 
 class StopWatch extends React.Component {
-    state = {
-        running: false,
-        lapse: 0,
-    };
+    constructor(props) {
+        super(props);
 
-    now = 0;
-    timer = null;
+        this.state = {
+            running: false,
+            lapse: 0
+        };
+
+        this.now = 0;
+        this.timer = null;
+
+        this.handleRunClick = this.handleRunClick.bind(this);
+        this.handleClearClick = this.handleClearClick.bind(this);
+    }
 
     componentWillUnmount() {
         this.stop();
     }
 
-    handleRunClick = () => {
+    handleRunClick() {
         if (this.state.running) {
             this.stop();
         } else {
@@ -21,7 +28,7 @@ class StopWatch extends React.Component {
         }
     };
 
-    handleClearClick = () => {
+    handleClearClick() {
         this.stop();
         this.now = 0;
 

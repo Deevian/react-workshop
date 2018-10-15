@@ -2,31 +2,34 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 class NameForm extends Component {
-    state = {
-        value: "",
-    };
+    constructor(props) {
+        super(props);
 
-    static propTypes = {
-        getErrorMessage: PropTypes.func.isRequired,
-    };
+        this.state = {
+            value: ""
+        };
+
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
 
     componentDidMount() {
         this.onValueChange();
     }
 
-    handleChange = event => {
+    handleChange(event) {
         const { value } = event.target;
 
         this.onValueChange(value);
-    };
+    }
 
-    handleSubmit = event => {
+    handleSubmit(event) {
         event.preventDefault();
 
         if (!this.state.error) {
             alert(this.state.value);
         }
-    };
+    }
 
     onValueChange(value = this.state.value) {
         const error = this.props.getErrorMessage(value);
@@ -55,9 +58,13 @@ class NameForm extends Component {
     }
 }
 
+NameForm.propTypes = {
+    getErrorMessage: PropTypes.func.isRequired,
+};
+
 export const Example = () => (
     <NameForm
-        getErrorMessage={value => {
+        getErrorMessage={(value) => {
             if (value.length < 3) {
                 return `Value must be at least 3 characters, but is only ${value.length}`;
             }

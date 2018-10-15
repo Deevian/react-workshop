@@ -42,27 +42,27 @@ function App() {
         <Router>
             <Route
                 path="/"
-                render={props => (
+                render={(props) => (
                     <div className={containerClassName}>
                         <div className={firstColumnClassName}>
                             <h1 className={titleClassName}>
                                 Exercises
                             </h1>
-                            
+
                             <List {...props} />
                         </div>
                         <div className={columnClassName}>
                             <h1 className={titleClassName}>
                                 Your Implementation
                             </h1>
-                            
+
                             <Exercises {...props} />
                         </div>
                         <div className={columnClassName}>
                             <h1 className={titleClassName}>
                                 Final Implementation
                             </h1>
-                            
+
                             <Final {...props} />
                         </div>
                     </div>

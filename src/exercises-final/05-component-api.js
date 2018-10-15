@@ -2,32 +2,29 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 class ContrivedComponent extends Component {
-    state = {
-        // Can also be initialized in the constructor
-        clicks: 0,
-    };
-
-    static propTypes = {
-        setExternalState: PropTypes.func,
-    };
-
-    static defaultProps = {
-        setExternalState: () => {}
-    };
-
     /**
-     * Often you don't need a constructor, and most of the time you want
-     * to avoid doing things with props in here, but this is a contrived
-     * component, so I'm doing fancy stuff!
+     * You can use the constructor to initialize most stuff in
+     * your component (e.g. the state).
+     * In state-less components, you can usually just skip adding
+     * this entirely.
      */
     constructor(props) {
         super(props);
 
-        this.externalState = { constructor: 1 };
-
         console.log("constructor");
 
+        this.state = {
+            clicks: 0,
+        };
+
+        this.externalState = {
+            constructor: 1
+        };
+
         props.setExternalState(this.externalState);
+
+        this.onButtonClick = this.onButtonClick.bind(this);
+        this.onForceUpdateClick = this.onForceUpdateClick.bind(this);
     }
 
     /**
@@ -97,7 +94,7 @@ class ContrivedComponent extends Component {
     /**
      * This is an event handler used in render.
      */
-    onButtonClick = () => {
+    onButtonClick() {
         const { clicks } = this.state;
         const newClicks = clicks + 1;
         const groupName = `Child state update: clicks ${newClicks}`;
@@ -112,7 +109,7 @@ class ContrivedComponent extends Component {
     /**
      * This is an event handler used in render.
      */
-    onForceUpdateClick = () => {
+    onForceUpdateClick() {
         const groupName = "force update";
 
         console.groupCollapsed(groupName);
@@ -120,7 +117,7 @@ class ContrivedComponent extends Component {
         this.forceUpdate(() => {
             console.groupEnd(groupName);
         });
-    };
+    }
 
     render() {
         this.push("render");
@@ -172,14 +169,30 @@ class ContrivedComponent extends Component {
     }
 }
 
-class ContrivedComponentContainer extends Component {
-    state = {
-        renderChild: true,
-        shouldChildUpdate: true,
-        count: 0,
-    };
+ContrivedComponent.propTypes = {
+    setExternalState: PropTypes.func,
+};
 
-    childState = null;
+ContrivedComponent.defaultProps = {
+    setExternalState: () => {}
+};
+
+class ContrivedComponentContainer extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            renderChild: true,
+            shouldChildUpdate: true,
+            count: 0,
+        };
+
+        this.childState = null;
+
+        this.toggleRenderChild = this.toggleRenderChild.bind(this);
+        this.toggleShouldChildUpdate = this.toggleShouldChildUpdate.bind(this);
+        this.increment = this.increment.bind(this);
+    }
 
     componentWillMount() {
         console.groupCollapsed("Mounting -> Mounted");
@@ -189,29 +202,29 @@ class ContrivedComponentContainer extends Component {
         console.groupEnd("Mounting -> Mounted");
     }
 
-    toggleRenderChild = (event) => {
+    toggleRenderChild(event) {
         this.childState = null;
 
         const { checked: renderChild } = event.target;
         const groupName = `Parent state update: renderChild ${renderChild}`;
 
         this.setStateWithLog(groupName, { renderChild });
-    };
+    }
 
-    toggleShouldChildUpdate = (event) => {
+    toggleShouldChildUpdate(event) {
         const { checked: shouldChildUpdate } = event.target;
         const groupName = `Parent state update: shouldChildUpdate ${shouldChildUpdate}`;
 
         this.setStateWithLog(groupName, { shouldChildUpdate });
-    };
+    }
 
-    increment = () => {
+    increment() {
         const { count } = this.state;
         const newCount = count + 1;
         const groupName = `Parent state update: count ${newCount}`;
 
         this.setStateWithLog(groupName, { count: newCount });
-    };
+    }
 
     setStateWithLog(groupName, state) {
         console.groupCollapsed(groupName);
@@ -271,7 +284,7 @@ class ContrivedComponentContainer extends Component {
                 {renderChild ? (
                     <ContrivedComponent
                         count={this.state.count}
-                        setExternalState={state => (this.childState = state)}
+                        setExternalState={(state) => (this.childState = state)}
                         shouldUpdate={shouldChildUpdate}
                     />
                 ) : null}

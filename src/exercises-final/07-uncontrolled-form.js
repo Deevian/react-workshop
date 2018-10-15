@@ -2,11 +2,13 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 class NameForm extends Component {
-    static propTypes = {
-        defaultName: PropTypes.string,
-    };
+    constructor(props) {
+        super(props);
 
-    handleSubmit = event => {
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleSubmit(event) {
         event.preventDefault();
         alert(this.input.value);
     };
@@ -19,7 +21,7 @@ class NameForm extends Component {
                     <input
                         type="text"
                         defaultValue={this.props.defaultName}
-                        ref={node => (this.input = node)}
+                        ref={(node) => (this.input = node)}
                     />
                 </label>
                 <input type="submit" value="Submit" />
@@ -27,6 +29,10 @@ class NameForm extends Component {
         );
     }
 }
+
+NameForm.propTypes = {
+    defaultName: PropTypes.string,
+};
 
 export const Example = () => <NameForm defaultName="Marcy" />;
 

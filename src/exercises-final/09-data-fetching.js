@@ -3,20 +3,17 @@ import PropTypes from "prop-types";
 import axios from "axios";
 
 class RepoListContainer extends Component {
-    state = {
-        repos: null,
-        loading: false,
-        error: null,
-    };
+    constructor(props) {
+        super(props);
 
-    static propTypes = {
-        username: PropTypes.string.isRequired,
-        fetch: PropTypes.func,
-    };
+        this.state = {
+            repos: null,
+            loading: false,
+            error: null,
+        };
 
-    static defaultProps = {
-        fetch: axios.get,
-    };
+        this.fetchRepos = this.fetchRepos.bind(this);
+    }
 
     componentDidMount() {
         this.fetchRepos();
@@ -71,6 +68,15 @@ class RepoListContainer extends Component {
         );
     }
 }
+
+RepoListContainer.propTypes = {
+    username: PropTypes.string.isRequired,
+    fetch: PropTypes.func,
+};
+
+RepoListContainer.defaultProps = {
+    fetch: axios.get,
+};
 
 function RepoList({ username, repos }) {
     return (

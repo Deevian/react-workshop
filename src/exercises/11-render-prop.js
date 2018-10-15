@@ -20,19 +20,9 @@ import axios from "axios";
 // Example:
 //
 //     class FetchUserProfile extends Component {
-//         state = {
-//             user: {}
-//         };
-//
-//         static propTypes = {
-//             username: PropTypes.number.isRequired,
-//             fetch: PropTypes.func,
-//         };
-//
-//         static defaultProps = {
-//             // Doing this allows you to pass a mock version as a prop
-//             fetch: axios.get
-//         };
+//         constructor(props) {
+//             super(props);
+//         }
 //
 //         componentDidMount() {
 //             this.props.fetch(`/users/${this.props.username}`)
@@ -47,6 +37,16 @@ import axios from "axios";
 //             return this.props.children(this.state)
 //         }
 //     }
+//
+//     FetchUserProfile.propTypes = {
+//         username: PropTypes.number.isRequired,
+//         fetch: PropTypes.func,
+//     };
+//
+//     FetchUserProfile.defaultProps = {
+//         // Doing this allows you to pass a mock version as a prop
+//         fetch: axios.get
+//     };
 //
 //     function UserProfile({ username, ...rest }) {
 //         return (
@@ -84,20 +84,17 @@ class FetchRepoList extends Component {
 
 // Refactor this to be a function component that uses <FetchRepoList>.
 class RepoListContainer extends Component {
-    state = {
-        repos: null,
-        loading: false,
-        error: null,
-    };
+    constructor(props) {
+        super(props);
 
-    static propTypes = {
-        username: PropTypes.string.isRequired,
-        fetch: PropTypes.func,
-    };
+        this.state = {
+            repos: null,
+            loading: false,
+            error: null,
+        };
 
-    static defaultProps = {
-        fetch: axios.get,
-    };
+        this.fetchRepos = this.fetchRepos.bind(this);
+    }
 
     componentDidMount() {
         this.fetchRepos();
@@ -120,7 +117,7 @@ class RepoListContainer extends Component {
                     error: null,
                     loading: false
                 }),
-                error => this.setState({
+                (error) => this.setState({
                     repos: null,
                     error,
                     loading: false
@@ -152,6 +149,15 @@ class RepoListContainer extends Component {
         );
     }
 }
+
+RepoListContainer.propTypes = {
+    username: PropTypes.string.isRequired,
+    fetch: PropTypes.func,
+};
+
+RepoListContainer.defaultProps = {
+    fetch: axios.get,
+};
 
 function RepoList({ username, repos }) {
     return (

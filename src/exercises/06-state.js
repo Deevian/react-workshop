@@ -30,9 +30,13 @@ import React from "react";
 // Here's an example of a component that uses state:
 //
 //     class ClickCounter extends React.Component {
-//         state = {
-//             clicks: 0, // Initialize the state (using Public Class Fields, could be in the constructor)
-//         };
+//         constructor(props) {
+//             super(props);
+//
+//             this.state = {
+//                 clicks: 0
+//             };
+//         }
 //
 //         handleButtonClick = () => {
 //             this.setState({
@@ -49,6 +53,7 @@ import React from "react";
 //             );
 //         }
 //     }
+//
 
 class StopWatch extends React.Component {
     // In here, you should initialize the state with the following properties:
@@ -63,8 +68,7 @@ class StopWatch extends React.Component {
     // In your render method, you'll render a div wrapper with a label that renders
     // {this.state.lapse} and two buttons (Start / Stop, and Clear).
     //
-    // You'll need to have an `onClick` handler on the <buttons> and you can define
-    // those using Public Class Fields.
+    // You'll need to have `onClick` handlers for the <buttons>.
     //
     // And you'll also need to have start and stop methods which your click handlers
     // will use to start and stop the setInterval

@@ -5,21 +5,16 @@ import axios from "axios";
 const WrappedRepoListContainer = fetchDataComponent(RepoListContainer);
 
 function fetchDataComponent(Comp) {
-    return class FetchData extends Component {
-        state = {
-            repos: null,
-            loading: false,
-            error: null,
-        };
+    class FetchData extends Component {
+        constructor(props) {
+            super(props);
 
-        static propTypes = {
-            username: PropTypes.string.isRequired,
-            fetch: PropTypes.func,
-        };
+            this.state = {
+                user: {}
+            };
 
-        static defaultProps = {
-            fetch: axios.get,
-        };
+            this.fetchRepos = this.fetchRepos.bind(this);
+        }
 
         componentDidMount() {
             this.fetchRepos();
@@ -55,7 +50,18 @@ function fetchDataComponent(Comp) {
             // We're forwarding the props given to this component to the child Comp.
             return <Comp {...this.state} {...this.props} />;
         }
+    }
+
+    FetchData.propTypes = {
+        username: PropTypes.string.isRequired,
+        fetch: PropTypes.func,
     };
+
+    FetchData.defaultProps = {
+        fetch: axios.get,
+    };
+
+    return FetchData;
 }
 
 function RepoListContainer({ username, repos, loading, error }) {

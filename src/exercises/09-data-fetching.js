@@ -16,19 +16,13 @@ import axios from "axios";
 // Example:
 //
 //     class UserProfile extends Component {
-//         state = {
-//             user: {},
-//         };
+//         constructor(props) {
+//             super(props);
 //
-//         static propTypes = {
-//             username: PropTypes.number.isRequired,
-//             fetch: PropTypes.func,
-//         };
-//
-//         static defaultProps = {
-//             // Doing this allows you to pass a mock version as a prop
-//             fetch: axios.get,
-//         };
+//             this.state = {
+//                 username: PropTypes.number.isRequired,
+//             };
+//         }
 //
 //         componentDidMount() {
 //             this.props.fetch(`/users/${this.props.username}`)
@@ -52,7 +46,13 @@ import axios from "axios";
 //     }
 //
 //     UserProfile.propTypes = {
-//          username: PropTypes.number.isRequired
+//          username: PropTypes.number.isRequired,
+//          fetch: PropTypes.func,
+//     };
+//
+//     UserProfile.defaultProps = {
+//         // Doing this allows you to pass a mock version as a prop
+//         fetch: axios.get,
 //     };
 //
 // See https://facebook.github.io/react/docs/component-specs.html
